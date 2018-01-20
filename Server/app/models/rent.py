@@ -26,6 +26,3 @@ class RentModel(Document):
     content = StringField(
         required=True
     )
-    image = StringField(
-        default=None
-    )

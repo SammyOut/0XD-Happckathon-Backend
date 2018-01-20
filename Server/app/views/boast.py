@@ -28,8 +28,7 @@ class Boast(Resource):
             'title': boast.title,
             'author_id': boast.author.id,
             'author_nickname': boast.author.nickname,
-            'content': boast.content,
-            'image': boast.image
+            'content': boast.content
         } for boast in boasts]
 
         return Response(json.dumps(response, ensure_ascii=False), 200, content_type='application/json; charset=utf8')
@@ -45,19 +44,13 @@ class Boast(Resource):
             abort(403)
 
         rq = request.form
-        path = '../static/image/'
-
         if len(rq['title']) < 5:
             return Response('', 205)
-
-        file = request.files['image']
-        file.save(path + 'boast_' + file.filename)
 
         BoastModel(
             title=rq['title'],
             author=user,
             content=rq['content'],
-            image='boast_' + file.filename
         ).save()
 
         return Response('', 201)

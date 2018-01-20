@@ -26,7 +26,3 @@ class BoastModel(Document):
     content = StringField(
         required=True
     )
-
-    image = StringField(
-        required=True
-    )

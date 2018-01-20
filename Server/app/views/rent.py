@@ -52,9 +52,9 @@ class Rent(Resource):
             'title': rent.title,
             'author_id': rent.author.id,
             'author_nickname': rent.author.nickname,
+            'author_phone': rent.author.phone,
             'hour_price': rent.hour_price or None,
             'day_price': rent.day_price or None,
-            'image': rent.image
         }
 
         return Response(json.dumps(response, ensure_ascii=False), 200, content_type='application/json; charset=utf8')
@@ -70,13 +70,9 @@ class Rent(Resource):
             abort(403)
 
         rq = request.form
-        path = '../static/image/'
 
         if len(rq['title']) < 5:
             return Response('', 205)
-
-        file = request.files['image']
-        file.save(path + 'rent_' + file.filename)
 
         RentModel(
             category=rq['category'],
@@ -86,8 +82,7 @@ class Rent(Resource):
             day_price=rq.pop('day_price', None),
 
             title=rq['title'],
-            content=rq['content'],
-            image='rent_' + file.filename
+            content=rq['content']
         ).save()
 
         return Response('', 201)

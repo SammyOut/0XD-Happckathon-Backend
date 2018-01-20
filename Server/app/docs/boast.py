@@ -21,8 +21,7 @@ BOAST_GET = {
                         'title': '자랑글1 제목',
                         'author_id': '자랑글1 작성자 id',
                         'author_nickname': '자랑글1 작성자 nickname',
-                        'content': '자랑글1 내용',
-                        'image': '자랑글1 사진'
+                        'content': '자랑글1 내용'
                     },
                     {
                         'id': '자랑글2 id',
@@ -30,8 +29,7 @@ BOAST_GET = {
                         'title': '자랑글2 제목',
                         'author_id': '자랑글2 작성자 id',
                         'author_nickname': '자랑글2 작성자 nickname',
-                        'content': '자랑글2 내용',
-                        'image': '자랑글2 사진'
+                        'content': '자랑글2 내용'
                     }
                 ]
             }
@@ -66,13 +64,6 @@ BOAST_POST = {
             'description': '글의 내용',
             'in': 'formData',
             'type': 'str',
-            'required': True
-        },
-        {
-            'name': 'image',
-            'description': '이미지',
-            'in': 'file',
-            'type': 'file',
             'required': True
         }
     ],

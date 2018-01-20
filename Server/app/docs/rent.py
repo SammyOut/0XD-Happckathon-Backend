@@ -25,13 +25,11 @@ RENT_LIST_GET = {
                     'id': '대여글의 id',
                     'category': '대여할 물품의 종류(카테고리)',
                     'title': '대여 글의 제목',
-                    'image': '대여 글에 들어갈 사진'
                 },
                     {
                     'id': '대여글의 id',
                     'category': '대여할 물품의 종류(카테고리)',
                     'title': '대여 글의 제목',
-                    'image': '대여 글에 들어가는 사진'
                 }
                 ]
             }
@@ -72,8 +70,7 @@ RENT_GET = {
                     'author_id': '글 작성자의 id',
                     'author_nickname': '글 작성자의 닉네임',
                     'hour_price': '시간당 가격',
-                    'day_price': '하루당 가격',
-                    'photo': '대여 글에 들어가는 사진'
+                    'day_price': '하루당 가격'
                 }
             }
         },
@@ -127,13 +124,6 @@ RENT_POST = {
             'description': '글의 내용',
             'in': 'formData',
             'type': 'str',
-            'required': True
-        },
-        {
-            'name': 'image',
-            'description': '이미지',
-            'in': 'file',
-            'type': 'file',
             'required': True
         }
     ],
