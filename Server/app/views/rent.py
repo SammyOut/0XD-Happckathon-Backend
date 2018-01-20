@@ -25,7 +25,7 @@ class RentList(Resource):
             return Response('', 204)
 
         response = [{
-            'id': rent.id,
+            'id': str(rent.id),
             'category': rent.category,
             'title': rent.title
         } for rent in rents]
@@ -47,7 +47,7 @@ class Rent(Resource):
             return Response('', 204)
 
         response = {
-            'id': rent.id,
+            'id': str(rent.id),
             'category': rent.category,
             'title': rent.title,
             'author_id': rent.author.id,
@@ -68,6 +68,9 @@ class Rent(Resource):
         if not user:
             abort(403)
         rq = request.json
+
+        if len(rq['title']) < 5:
+            return Response('', 205)
 
         RentModel(
             category=rq['category'],

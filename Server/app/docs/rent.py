@@ -134,6 +134,9 @@ RENT_POST = {
         '201': {
             'description': '글 작성 성공'
         },
+        '205': {
+            'description': '글 제목의 길이가 짧음 (5글자 이상)'
+        },
         '403': {
             'description': '권한 없음'
         }
