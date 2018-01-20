@@ -53,7 +53,8 @@ class Rent(Resource):
             'author_id': rent.author.id,
             'author_nickname': rent.author.nickname,
             'hour_price': rent.hour_price or None,
-            'day_price': rent.day_price or None
+            'day_price': rent.day_price or None,
+            'image': rent.image
         }
 
         return Response(json.dumps(response, ensure_ascii=False), 200, content_type='application/json; charset=utf8')
@@ -67,7 +68,11 @@ class Rent(Resource):
         user = AccountModel.objects(id=get_jwt_identity()).first()
         if not user:
             abort(403)
-        rq = request.json
+
+        rq = request.form
+        path = '../static/image'
+        file = request.file['image']
+        file.save(path + file.filename)
 
         if len(rq['title']) < 5:
             return Response('', 205)
@@ -77,10 +82,11 @@ class Rent(Resource):
             author=user,
 
             hour_price=rq.pop('hour_price', None),
-            day_price=rq.pop('hour_price', None),
+            day_price=rq.pop('day_price', None),
 
             title=rq['title'],
-            content=rq['content']
+            content=rq['content'],
+            image=file.filename
         ).save()
 
         return Response('', 201)
