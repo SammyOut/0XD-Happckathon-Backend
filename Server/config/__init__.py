@@ -1,7 +1,12 @@
-import os
-# from datetime import timedelta
+from datetime import timedelta
 
 PORT = 3000
+
+SECRET_KEY = 'idontcaresecurity'
+
+JWT_ACCESS_TOKEN_EXPIRES = timedelta(days=1)
+JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=365)
+JWT_HEADER_TYPE = 'JWT'
 
 SERVICE_NAME = 'Hackathon Flask baseline'
 

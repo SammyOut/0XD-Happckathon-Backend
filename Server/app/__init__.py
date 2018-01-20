@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_jwt_extended import JWTManager
 from flasgger import Swagger
 
 from app.docs import TEMPLATE
@@ -7,16 +8,10 @@ from app.views import ViewInjector
 from app.middleware import Logger
 
 swagger = Swagger(template=TEMPLATE)
-# To Swagger UI
-
 db = Mongo()
-# To Control MongoDB
-
 view = ViewInjector()
-# To Swagger Documentation
-
 logger = Logger()
-# To log in every context of Flask
+jwt = JWTManager()
 
 
 def create_app(config_name):
@@ -28,6 +23,7 @@ def create_app(config_name):
     app_ = Flask(__name__)
     app_.config.from_pyfile(config_name)
 
+    jwt.init_app(app_)
     swagger.init_app(app_)
     db.init_app(app_)
     view.init_app(app_)
