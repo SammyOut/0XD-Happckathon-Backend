@@ -13,7 +13,7 @@ class SignUp(Resource):
         """
         회원가입 
         """
-        rq = request.json
+        rq = request.form
         id = rq['id']
         pw = rq['pw']
         nickname = rq['nickname']

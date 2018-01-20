@@ -5,28 +5,28 @@ SIGNUP_POST = {
         {
             'name': 'id',
             'description': '회원 가입할 아이디',
-            'in': 'json',
+            'in': 'formData',
             'type': 'str',
             'required': True
         },
         {
             'name': 'pw',
             'description': '회원 가입할 비밀번호',
-            'in': 'json',
+            'in': 'formData',
             'type': 'str',
             'required': True
         },
         {
             'name': 'nickname',
             'description': '닉네임',
-            'in': 'json',
+            'in': 'formData',
             'type': 'str',
             'required': True
         },
         {
             'name': 'phone',
             'description': '핸드폰 번호',
-            'in': 'json',
+            'in': 'formData',
             'type': 'str',
             'required': True
         }
