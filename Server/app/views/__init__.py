@@ -1,7 +1,8 @@
 from flask_restful import Api
 
 from app.views.sample import Sample
-from app.views.account import SignUp, Auth
+from app.views.account import *
+from app.views.rent import *
 
 class ViewInjector(object):
     def __init__(self, app=None):
@@ -12,5 +13,11 @@ class ViewInjector(object):
         api = Api(app)
 
         api.add_resource(Sample, '/sample')
+
+        # 계정
         api.add_resource(SignUp, '/signup')
         api.add_resource(Auth, '/auth')
+
+        # 대여
+        api.add_resource(RentList, '/rentlist')
+        api.add_resource(Rent, '/rent')
