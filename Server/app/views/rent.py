@@ -70,13 +70,13 @@ class Rent(Resource):
             abort(403)
 
         rq = request.form
-        path = '../static/image'
+        path = '../static/image/'
 
         if len(rq['title']) < 5:
             return Response('', 205)
 
         file = request.files['image']
-        file.save(path + file.filename)
+        file.save(path + 'rent_' + file.filename)
 
         RentModel(
             category=rq['category'],
@@ -87,7 +87,7 @@ class Rent(Resource):
 
             title=rq['title'],
             content=rq['content'],
-            image=file.filename
+            image='rent_' + file.filename
         ).save()
 
         return Response('', 201)
