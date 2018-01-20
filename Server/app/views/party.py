@@ -6,10 +6,11 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 import json
 from app.models.account import AccountModel
 from app.models.party import PartyModel
+from app.docs.party import *
 
 
 class PartyList(Resource):
-    @swag_from()
+    @swag_from(PARTY_LIST_GET)
     @jwt_required
     def get(self):
         """
@@ -35,7 +36,7 @@ class PartyList(Resource):
 
 
 class Party(Resource):
-    @swag_from()
+    @swag_from(PARTY_GET)
     @jwt_required
     def get(self):
         """
@@ -70,7 +71,7 @@ class Party(Resource):
 
         return Response(json.dumps(response, ensure_ascii=False), 200, content_type='application/json; charset=utf8')
 
-    @swag_from()
+    @swag_from(PARTY_POST)
     @jwt_required
     def post(self):
         """
@@ -92,7 +93,7 @@ class Party(Resource):
 
         return Response('', 201)
 
-    @swag_from()
+    @swag_from(PARTY_DELETE)
     @jwt_required
     def delete(self):
         """
@@ -115,11 +116,11 @@ class Party(Resource):
 
 
 class PartyJoin(Resource):
-    @swag_from()
+    @swag_from(PARTY_JOIN_POST)
     @jwt_required
     def post(self):
         """
-        파티 참가 신청
+        파티 참가
         """
         user = AccountModel.objects(id=get_jwt_identity()).first()
         if not user:
