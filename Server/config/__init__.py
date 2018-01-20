@@ -1,6 +1,6 @@
 from datetime import timedelta
 
-PORT = 3000
+PORT = 1234
 
 SECRET_KEY = 'idontcaresecurity'
 
@@ -8,7 +8,7 @@ JWT_ACCESS_TOKEN_EXPIRES = timedelta(days=1)
 JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=365)
 JWT_HEADER_TYPE = 'JWT'
 
-SERVICE_NAME = 'Hackathon Flask baseline'
+SERVICE_NAME = '0XD'
 
 SWAGGER = {
     'title': SERVICE_NAME,
