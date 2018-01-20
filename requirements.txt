@@ -1,0 +1,4 @@
+Flask == 0.12.2
+flask_restful_swagger_2 == 0.35
+mongoengine == 0.13.0
+flasgger == 0.8.0
