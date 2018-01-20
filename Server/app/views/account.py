@@ -10,6 +10,9 @@ from app.docs.account import *
 class SignUp(Resource):
     @swag_from(SIGNUP_POST)
     def post(self):
+        """
+        회원가입 
+        """
         rq = request.json
         id = rq['id']
         pw = rq['pw']
@@ -32,6 +35,9 @@ class SignUp(Resource):
 class Auth(Resource):
     @swag_from(AUTH_POST)
     def post(self):
+        """
+        로그인
+        """
         id = request.form['id']
         pw = request.form['pw']
         user = AccountModel.objects(id=id, pw=pw).first()

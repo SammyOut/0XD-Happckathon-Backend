@@ -14,6 +14,9 @@ class RentList(Resource):
     @swag_from(RENT_LIST_GET)
     @jwt_required
     def get(self):
+        """
+        대여 글 리스트 불러오기
+        """
         category = request.args['category']
 
         rents = RentModel.objects(category=category)
@@ -35,6 +38,9 @@ class Rent(Resource):
     @swag_from(RENT_GET)
     @jwt_required
     def get(self):
+        """
+        대여 글 읽기
+        """
         id = request.args['id']
 
         rent = RentModel.objects(id=id).first()
@@ -57,6 +63,9 @@ class Rent(Resource):
     @swag_from(RENT_POST)
     @jwt_required
     def post(self):
+        """
+        대여 글 작성
+        """
         user = AccountModel.objects(id=get_jwt_identity()).first()
         if not user:
             abort(403)
@@ -79,6 +88,9 @@ class Rent(Resource):
     @swag_from(RENT_DELETE)
     @jwt_required
     def delete(self):
+        """
+        대여 글 삭제
+        """
         user = AccountModel.objects(id=get_jwt_identity()).first()
         if not user:
             abort(403)
