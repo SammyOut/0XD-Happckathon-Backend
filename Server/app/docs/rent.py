@@ -97,38 +97,45 @@ RENT_POST = {
         {
             'name': 'category',
             'description': '작성할 글의 카테고리',
-            'in': 'json',
+            'in': 'formData',
             'type': 'str',
             'required': True
         },
         {
             'name': 'hour_price',
             'description': '시간당 가격',
-            'in': 'json',
+            'in': 'formData',
             'type': 'int',
             'required': False
         },
         {
             'name': 'day_price',
             'description': '하루당 가격',
-            'in': 'json',
+            'in': 'formData',
             'type': 'int',
             'required': False
         },
         {
             'name': 'title',
             'description': '글의 제목',
-            'in': 'json',
+            'in': 'formData',
             'type': 'str',
             'required': True
         },
         {
             'name': 'content',
             'description': '글의 내용',
-            'in': 'json',
+            'in': 'formData',
             'type': 'str',
             'required': True
         },
+        {
+            'name': 'image',
+            'description': '이미지',
+            'in': 'file',
+            'type': 'file',
+            'required': True
+        }
     ],
     'responses': {
         '201': {
