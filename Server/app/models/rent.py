@@ -26,6 +26,3 @@ class RentModel(Document):
     content = StringField(
         required=True
     )
-    file = StringField(
-        default=''
-    )

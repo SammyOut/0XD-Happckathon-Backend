@@ -27,8 +27,7 @@ class RentList(Resource):
         response = [{
             'id': rent.id,
             'category': rent.category,
-            'title': rent.title,
-            'photo': rent.file or None
+            'title': rent.title
         } for rent in rents]
 
         return Response(json.dumps(response, ensure_ascii=False), 200, content_type='application/json; charset=utf8')
@@ -54,8 +53,7 @@ class Rent(Resource):
             'author_id': rent.author.id,
             'author_nickname': rent.author.nickname,
             'hour_price': rent.hour_price or None,
-            'day_price': rent.day_price or None,
-            'photo': rent.file or None
+            'day_price': rent.day_price or None
         }
 
         return Response(json.dumps(response, ensure_ascii=False), 200, content_type='application/json; charset=utf8')
@@ -79,8 +77,7 @@ class Rent(Resource):
             day_price=rq.pop('hour_price', None),
 
             title=rq['title'],
-            content=rq['content'],
-            file=rq.pop('file', None)
+            content=rq['content']
         ).save()
 
         return Response('', 201)
