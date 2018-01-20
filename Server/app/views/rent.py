@@ -54,7 +54,7 @@ class Rent(Resource):
 
         return Response(json.dumps(response, ensure_ascii=False), 200, content_type='application/json; charset=utf8')
 
-    @swag_from()
+    @swag_from(RENT_POST)
     @jwt_required
     def post(self):
         user = AccountModel.objects(id=get_jwt_identity()).first()
