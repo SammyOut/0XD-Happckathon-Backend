@@ -1,10 +1,11 @@
 from flask_restful import Api
 
-from app.views.sample import Sample
 from app.views.account import *
-from app.views.rent import *
 from app.views.boast import *
 from app.views.image import *
+from app.views.party import *
+from app.views.rent import *
+from app.views.sample import Sample
 
 class ViewInjector(object):
     def __init__(self, app=None):
@@ -26,6 +27,10 @@ class ViewInjector(object):
 
         # 자랑
         api.add_resource(Boast, '/boast')
+
+        # 파티
+        api.add_resource(PartyList, '/partylist')
+        api.add_resource(Party, '/party')
 
         # 이미지
         api.add_resource(Image, '/image/<image_name>')
