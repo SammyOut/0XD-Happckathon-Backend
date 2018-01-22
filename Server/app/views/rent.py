@@ -19,7 +19,7 @@ class RentList(Resource):
         """
         category = request.args['category']
 
-        rents = RentModel.objects(category=category)
+        rents = RentModel.objects()
 
         if not rents.first():
             return Response('', 204)
@@ -55,6 +55,7 @@ class Rent(Resource):
             'author_phone': rent.author.phone,
             'hour_price': rent.hour_price or None,
             'day_price': rent.day_price or None,
+            'content': rent.content
         }
 
         return Response(json.dumps(response, ensure_ascii=False), 200, content_type='application/json; charset=utf8')
@@ -74,18 +75,18 @@ class Rent(Resource):
         if len(rq['title']) < 5:
             return Response('', 205)
 
-        RentModel(
+        rent = RentModel(
             category=rq['category'],
             author=user,
 
-            hour_price=rq.pop('hour_price', None),
-            day_price=rq.pop('day_price', None),
+            hour_price=rq['hour_price'],
+            day_price=rq['day_price'],
 
             title=rq['title'],
             content=rq['content']
         ).save()
 
-        return Response('', 201)
+        return Response(str(rent.id), 201)
 
     @swag_from(RENT_DELETE)
     @jwt_required

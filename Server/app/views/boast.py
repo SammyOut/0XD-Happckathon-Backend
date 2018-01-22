@@ -47,13 +47,13 @@ class Boast(Resource):
         if len(rq['title']) < 5:
             return Response('', 205)
 
-        BoastModel(
+        boast = BoastModel(
             title=rq['title'],
             author=user,
             content=rq['content'],
         ).save()
 
-        return Response('', 201)
+        return Response(str(boast.id), 201)
 
     @swag_from(BOAST_DELETE)
     @jwt_required

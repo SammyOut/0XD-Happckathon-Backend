@@ -70,7 +70,8 @@ RENT_GET = {
                     'author_id': '글 작성자의 id',
                     'author_nickname': '글 작성자의 닉네임',
                     'hour_price': '시간당 가격',
-                    'day_price': '하루당 가격'
+                    'day_price': '하루당 가격',
+                    'content': '내용'
                 }
             }
         },
